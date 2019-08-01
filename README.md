@@ -1,6 +1,10 @@
-# **Matrix-Methods-in-Data-Mining-and-Pattern-Recognit 中文翻译**
+## **Matrix-Methods-in-Data-Mining-and-Pattern-Recognit 中文翻译**
 
 极有可能不了了之。。。
+
+由于GitHub的md显示不支持数学公式，请使用本地的md阅读工具阅读，推荐Typora。之后有时间，可能会整理一份格式稍好的pdf版本。
+
+### Note
 
 原稿件为pdf，试了各种方法，最后综合考虑还是使用md分章节来手动完成。翻译基本采用机翻，再结合自己的理解。
 
@@ -8,6 +12,5 @@
 
 整理过程中采用Typora进行md的编写，天若OCR进行公式的提取，CopyTranslator进行文字提取及翻译。感谢以上工具的开发者。
 
-十分感谢本书作者及其相关人员。
+十分感谢本书作者及其相关人员。如果侵犯了任何的利益关系，请直接提issue，我将删除该项目。
 
-如果侵犯了任何的利益关系，请直接提issue，我将删除该项目。

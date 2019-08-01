@@ -1,4 +1,4 @@
-# 第一部分 线性代数概念和矩阵分解
+# 第一章 线性代数概念和矩阵分解
 
 ## 1.1 数据挖掘与模式识别
 
@@ -6,7 +6,7 @@
 
 模式识别通常被认为是一种与数据挖掘不同的技术，但其定义是相关的： “采用原始数据并根据模式的'类别'采取行动的行为”[31]。在本书中，我们不会强调概念之间的差异。
 
-数据挖掘有许多应用领域，从电子商务[10,69]到生物信息学[6]，从科学应用，如金星[21]上的火山分类到信息检索[3]和互联网搜索引擎[ 11]。
+数据挖掘有许多应用领域，从电子商务[10,69]到生物信息学[6]，从科学应用，如金星[21]上的火山分类到信息检索[3]和互联网搜索引擎[11]。
 
 数据挖掘是一门真正的跨学科科学，其中使用来自计算机科学，统计学和数据分析，线性代数和优化的技术，这些技术通常采用相当折衷的方式。由于应用的实际重要性，该领域现在有许多书籍和文献[24,25,31,35,45,46,47,49,108]。
 
@@ -151,26 +151,55 @@ $f l [ x \odot y ] = ( x + e ) \odot ( y + f )$
 
 $| e | \leq \mu | x | , \quad | f | \leq \mu | y |$
 
+换句话说，$f l [ x \odot y ]$是对*微扰数据*进行操作的*准确*结果。这是*向后错误分析（backward error analysis）*的一个例子。
 
-
-$f l [ x \odot y ]$
+可以用IEEE双精度表示的最小和最大正实数大约是$10^{-308}$和$10^{308}$。如果计算结果给出浮点数量级小于$10^{-308}$，就会发生称为*下溢出*的浮点异常。同样，计算大于$10^{308}$的浮点数量值会导致*上溢出*。
 
 ![img](imgs/Fig1.2.png)
 
+**图1.2** *GJK算法中的向量*
+
+**例1.4（计算机图形学中的浮点计算）**  检测两个三维物体间的碰撞是图形学应用于计算机游戏，动画和模拟的标准问题[101]。早期的定点算术用于计算机图形学，但现在这种计算通常在浮点运算中完成。该领域的一个重要的子问题是计算最接近原点的凸体上的点。这个问题可以通过Gilbert-Johnson-Keerthi（GJK）算法来解决，他是迭代算法。终止条件如下
+
 $S ( v , w ) = v ^ { T } v - v ^ { T } w \leq \epsilon ^ { 2 }$
+
+对于迭代，其中向量如图1.2所示。当接近问题的解时，向量非常接近。在[101，pp.142-145]中，描述了在浮点运算中完成 $S(v，w)$ 的计算时可能出现的数值问题。这里我们给出了一个简短解释关于当 $v$ 和 $w$ 是标量时的计算，$s = v^2 -vw$，其表现出与向量的情况完全相同的问题。
+
+假设数据是不精确的（它们是先前计算的结果；在任何情况下它们都存在表示错误（1.1）），
 
 $\overline { v } = v \left( 1 + \epsilon _ { v } \right) , \quad \overline { w } = w \left( 1 + \epsilon _ { w } \right)$
 
+$\epsilon _ { v }$和$\epsilon _ { w}$相对较小，通常为 $\mu $ 的数量级。从（1.2）我们看到每个算术运算都会产生相对误差（1.3），因此我们假设$\left| \epsilon _ { i } \right| \leq \mu$。
+
 $\begin{aligned} f l \left[ v ^ { 2 } - v w \right] & = \left( v ^ { 2 } \left( 1 + \epsilon _ { v } \right) ^ { 2 } \left( 1 + \epsilon _ { 1 } \right) - v w \left( 1 + \epsilon _ { v } \right) \left( 1 + \epsilon _ { w } \right) \left( 1 + \epsilon _ { 2 } \right) \right) \left( 1 + \epsilon _ { 3 } \right) \\ & = \left( v ^ { 2 } - v w \right) + v ^ { 2 } \left( 2 \epsilon _ { v } + \epsilon _ { 1 } + \epsilon _ { 3 } \right) - v w \left( \epsilon _ { v } + \epsilon _ { w } + \epsilon _ { 2 } + \epsilon _ { 3 } \right) + O \left( \mu ^ { 2 } \right) \end{aligned}$
 
-$\left| \epsilon _ { i } \right| \leq \mu$
+可以通过估计计算量的相对误差
 
 $\left| \frac { f l \left[ v ^ { 2 } - v w \right] - \left( v ^ { 2 } - v w \right) } { \left( v ^ { 2 } - v w \right) } \right| \leq \frac { v ^ { 2 } \left( 2 \left| \epsilon _ { v } \right| + 2 \mu \right) + | v w | \left( \left| \epsilon _ { v } \right| + \left| \epsilon _ { w } \right| + 2 \mu \right) + O \left( \mu ^ { 2 } \right) } { \left| v ^ { 2 } - v w \right| }$
 
+我们看到如果 $v$ 和 $w$ 很大并且接近，则相对误差可能很大。例如，我们得到 $v = 100$ 和 $w = 99.999$
+
 $\left| \frac { f l \left[ v ^ { 2 } - v w \right] - \left( v ^ { 2 } - v w \right) } { \left( v ^ { 2 } - v w \right) } \right| \leq 10 ^ { 5 } \left( \left( 2 \left| \epsilon _ { v } \right| + 2 \mu \right) + \left( \left| \epsilon _ { v } \right| + \left| \epsilon _ { w } \right| + 2 \mu \right) + O \left( \mu ^ { 2 } \right) \right)$
+
+如果计算是在IEEE单精度中执行的，这在计算机图形应用中很常见，那么 $fl [v^2 -vw]$ 中的相对误差可能很大，以至于永远不会满足终止条件，迭代永不停止。在 GJK 算法中，除了上述情况之外，还有其他情况，当浮点舍入误差可能导致终止条件不可靠时，必须特别小心。见[101]。
+
+在前面的例子中出现的问题称为*取消*：当我们减去两个几乎相等的数字并且发生错误时，计算结果中有效数字较少，相对误差较大。有关IEEE标准和浮点计算中的舍入误差的更多详细信息，请参见，如[34，第2章]。 [50]给出了线性代数算法的广泛舍入误差分析。
+
+## 1.6 符号和约定
+
+我们将考虑具有实数的向量和矩阵。通常，矢量将由小写斜体罗马字母和矩阵用大写斜体罗马字母或希腊字母表示：
 
 $x \in \mathbb { R } ^ { n } , \quad A = \left( a _ { i j } \right) \in \mathbb { R } ^ { m \times n }$
 
+张量，即具有三个或更多索引的实数阵列，将由书法字体表示。例如，
+
 $\mathcal { S } = \left( s _ { i j k } \right) \in \mathbb { R } ^ { n _ { 1 } \times n _ { 2 } \times n _ { 3 } }$
 
+我们将使用 $\mathbb{R}^m$ 来表示在实数中维数m的向量空间和用于m×n矩阵的空间的$\mathbb{R}^{m×n}$。
+符号为
+
 $e _ { i } = \left( \begin{array} { c } { 0 } \\ { \vdots } \\ { 0 } \\ { 1 } \\ { 0 } \\ { \vdots } \\ { 0 } \end{array} \right)$
+
+其中1位于位置 $i$ ，用于“规范”单位向量。从上下文来看，维度通常很明显。
+
+单位矩阵表示为 $I$ 。有时我们强调维度并使用 $I_k$ 作为 $k×k$ 的单位矩阵。符号 $\rm diag(d_1，...，d_n) $表示对角矩阵。例如，$I =  \rm diag(1,1，...，1)$。

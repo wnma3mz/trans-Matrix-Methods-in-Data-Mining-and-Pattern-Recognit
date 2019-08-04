@@ -194,3 +194,43 @@ $\cos \theta ( x , y ) = \frac { x ^ { T } y } { \| x \| _ { 2 } \| y \| _ { 2 }
 ## 2.4 矩阵范数
 
 $\| A \| = \sup _ { x \neq 0 } \frac { \| A x \| } { \| x \| }$
+
+$\begin{aligned} \| A \| & \geq 0  \text{ for all } A \\ \| A \| &= 0 \text { if and only if } A = 0 \\ \| \alpha A \| & = | \alpha | \| A \| , \alpha \in \mathbb { R } , \\ \| A + B \| & \leq \| A \| + \| B \| , \text { the triangle inequality. } \end{aligned}$
+
+$\begin{aligned} \| A x \| & \leq \| A \| \| x \| \\ \| A B \| & \leq \| A \| \| B \| \end{aligned}$
+
+$\frac { \| A x \| } { \| x \| } \leq \| A \|$
+
+$\| A \| _ { 2 } = \left( \max\limits_ { 1 \leq i \leq n } \lambda _ { i } \left( A ^ { T } A \right) \right) ^ { 1 / 2 }$
+
+$\| A \| _ { \infty } = \max\limits_ { 1 \leq i \leq m } \sum\limits_ { i = 1 } ^ { n } \left| a _ { i j } \right|$
+
+$\| A \| _ { 1 } = \max\limits_ { 1 \leq j \leq n } \sum\limits_ { i = 1 } ^ { m } \left| a _ { i j } \right|$
+
+$\| A \| _ { F } = \sqrt { \sum \limits_ { i = 1 } ^ { m } \sum \limits_ { j = 1 } ^ { n } a _ { i j } ^ { 2 } }$
+
+$\| A \| _ { F } ^ { 2 } = \operatorname { tr } \left( A ^ { T } A \right)$
+
+$\operatorname { tr } ( B ) = \sum\limits_ { i = 1 } ^ { n } b _ { i i }$
+
+$\operatorname { span } \left( v _ { 1 } , v _ { 2 } , \ldots , v _ { n } \right) = \left\{ y | y = \sum\limits_ { j = 1 } ^ { n } \alpha _ { j } v _ { j } \right\}$
+
+$\sum _ { j = 1 } ^ { n } \alpha _ { j } v _ { j } = 0 \text { if and only if } \alpha _ { j } = 0 \text { for } j = 1,2 , \ldots , n$
+
+$v _ { k } = \sum _ { j \neq k } \beta _ { j } v _ { j }$
+
+$\sum \limits_ { j = 1 } ^ { n } \alpha _ { j } v _ { j } = 0$
+
+$\alpha _ { k } v _ { k } = \sum\limits _ { j \neq k } - \alpha _ { j } v _ { j }$
+
+$v _ { k } = \sum\limits _ { j \neq k } \beta _ { j } v _ { j }$
+
+$x y ^ { T } = \left( \begin{array} { l l l l } { y _ { 1 } x } & { y _ { 2 } x } & { \cdots } & { y _ { n } x } \end{array} \right) = \left( \begin{array} { c } { x _ { 1 } y ^ { T } } \\ { x _ { 2 } y ^ { T } } \\ { \vdots } \\ { x _ { n } y ^ { T } } \end{array} \right)$
+
+$A \in \mathbb { R } ^ { n \times n }$
+
+$A A ^ { - 1 } = A ^ { - 1 } A = I$
+
+$\sum _ { j = 1 } ^ { p } \alpha _ { j } v _ { j } = 0$
+
+$\sum _ { j = 1 } ^ { p } \alpha _ { j } T v _ { j } = 0$

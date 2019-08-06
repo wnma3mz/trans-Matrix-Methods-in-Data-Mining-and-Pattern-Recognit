@@ -193,44 +193,109 @@ $\cos \theta ( x , y ) = \frac { x ^ { T } y } { \| x \| _ { 2 } \| y \| _ { 2 }
 
 ## 2.4 矩阵范数
 
-$\| A \| = \sup _ { x \neq 0 } \frac { \| A x \| } { \| x \| }$
+对于任何向量范数，我们都可以定义相应的算子范数。设 $\cdot$ 为向量范数。相应的*矩阵范数*定义为
 
-$\begin{aligned} \| A \| & \geq 0  \text{ for all } A \\ \| A \| &= 0 \text { if and only if } A = 0 \\ \| \alpha A \| & = | \alpha | \| A \| , \alpha \in \mathbb { R } , \\ \| A + B \| & \leq \| A \| + \| B \| , \text { the triangle inequality. } \end{aligned}$
+$\| A \| = \sup\limits_ { x \neq 0 } \frac { \| A x \| } { \| x \| }$
+
+可以证明这样的矩阵范数满足（对于 $\alpha \in \mathbb{R}$）
+
+$\begin{aligned} \| A \| & \geq 0  \text{ for all } A \\ \| A \| &= 0 \text { if and only if } A = 0 \\ \| \alpha A \| & = | \alpha | \| A \| , \alpha \in \mathbb { R } , \\ \| A + B \| & \leq \| A \| + \| B \| , \text { 三角不等式 } \end{aligned}$
+
+对于上面定义的矩阵范数，以下基本不等式成立。
+
+**命题 2.1** *让 $\cdot $ 表示一个向量范数和相应的矩阵范数。然后*
 
 $\begin{aligned} \| A x \| & \leq \| A \| \| x \| \\ \| A B \| & \leq \| A \| \| B \| \end{aligned}$
 
+***证明***  根据我们的定义
+
 $\frac { \| A x \| } { \| x \| } \leq \| A \|$
+
+对于所有 $x\neq 0$ 的情况，得到第一个不等式。第二个通过使用前两个 $||ABx||$ 来证明。
+
+我们可以证明*二次范数*满足
 
 $\| A \| _ { 2 } = \left( \max\limits_ { 1 \leq i \leq n } \lambda _ { i } \left( A ^ { T } A \right) \right) ^ { 1 / 2 }$
 
+即矩阵 $A^TA$ 最大特征值的平方根。因此，对于给定的矩阵 $||A||_2$（中等或大尺寸的矩阵），要获得的计算量相对较大。计算*矩阵无穷范数*（对于 $A\in\mathbb{R}^{m\times n}$ ）要容易得多。
+
 $\| A \| _ { \infty } = \max\limits_ { 1 \leq i \leq m } \sum\limits_ { i = 1 } ^ { n } \left| a _ { i j } \right|$
+
+矩阵*一次范数*
 
 $\| A \| _ { 1 } = \max\limits_ { 1 \leq j \leq n } \sum\limits_ { i = 1 } ^ { m } \left| a _ { i j } \right|$
 
-$\| A \| _ { F } = \sqrt { \sum \limits_ { i = 1 } ^ { m } \sum \limits_ { j = 1 } ^ { n } a _ { i j } ^ { 2 } }$
+在第6.1节中，我们将看到矩阵的2次范数有一个关于 $A$ 的奇异值的显式表达式。
 
-$\| A \| _ { F } ^ { 2 } = \operatorname { tr } \left( A ^ { T } A \right)$
+设 $A\in \mathbb{R}^{m\times n}$。在某些情况下，我们将把矩阵不当作一个线性算子，而是当作一个空间中的点，即 $\mathbb{R}^{mn}$。然后我们可以使用 *Frobinius* 矩阵范数，它由
+
+$\| A \| _ { F } = \sqrt { \sum \limits_ { i = 1 } ^ { m } \sum \limits_ { j = 1 } ^ { n } a _ { i j } ^ { 2 } }$，式2.7
+
+有时也用等价形式写出弗罗贝尼乌斯（ Frobeniu）范数。
+
+$\| A \| _ { F } ^ { 2 } = \operatorname { tr } \left( A ^ { T } A \right)$，式2.8
+
+其中矩阵 $B\in \mathbb{R}^{m\times n}$ 的*迹*是其对角元素的和，
 
 $\operatorname { tr } ( B ) = \sum\limits_ { i = 1 } ^ { n } b _ { i i }$
 
+弗罗贝尼乌斯范数不对应于向量范数，因此在这个意义上它不是一个算子范数。这个范数的优点是比2次范数更容易计算。弗罗贝尼乌斯*矩阵范数*实际上与欧几里得*向量范数*密切相关，即当矩阵用 $\mathbb{R}^{m\times n}$ 中的元素标识时，它是矩阵 $\mathbb{R}^{m\times n}$（线性空间）上的欧几里得向量范数。
+
+## 2.5线性无关：基础部分
+
+给定一组在 $\mathbb{R}^m $ 向量 $(v_j)^{n}_{j=1}$, 其中 $m\ge n$，考虑一组线性组合
+
 $\operatorname { span } \left( v _ { 1 } , v _ { 2 } , \ldots , v _ { n } \right) = \left\{ y | y = \sum\limits_ { j = 1 } ^ { n } \alpha _ { j } v _ { j } \right\}$
+
+对于任意系数 $\alpha_j$，向量 ${(}v_j{)}^{n}_{j=1}$ 称为*线性无关*的条件为
 
 $\sum _ { j = 1 } ^ { n } \alpha _ { j } v _ { j } = 0 \text { if and only if } \alpha _ { j } = 0 \text { for } j = 1,2 , \ldots , n$
 
-$v _ { k } = \sum _ { j \neq k } \beta _ { j } v _ { j }$
+$ \mathbb{R}^m $ 中的一组 $m$ 线性无关向量称为 $\mathbb{R}^{m}$ 中的*基*：$\mathbb{R}^{m}$ 中的任何向量都可以表示为基向量的线性组合。
+
+**命题2.2** *假设向量 $ {(}v_j{)}^{n}_{j=1} $ 是线性相关的。然后一些 $v_k$ 可以写成其余部分的线性组合，$v _ { k } = \sum _ { j \neq k } \beta _ { j } v _ { j }$。*
+
+**证明。** *存在系数 $ \alpha_j $，其中一些 $\alpha_k\neq 0$，这样*
 
 $\sum \limits_ { j = 1 } ^ { n } \alpha _ { j } v _ { j } = 0$
 
+取 $\alpha_k \neq 0$，可以写成
+
 $\alpha _ { k } v _ { k } = \sum\limits _ { j \neq k } - \alpha _ { j } v _ { j }$
 
-$v _ { k } = \sum\limits _ { j \neq k } \beta _ { j } v _ { j }$
+等效成如下形式
+
+$v _ { k } = \sum\limits _ { j \neq k } \beta _ { j } v _ { j }$， $\beta_j=-\alpha_j / \alpha_k$
+
+如果我们有一组线性相关的向量，那么我们可以保持一个线性无关的子集，并用线性无关的子集来表示其余的部分。因此，我们可以将线性无关向量的个数作为集合信息内容的度量，并相应地压缩集合：以线性无关向量作为集合的代表（基向量），并根据基计算其余向量的坐标。然而，在实际应用中，我们很少有*精确的线性相关向量*，*大部分是线性相关向量*。结果表明，为了使这种*数据简化*过程实用且保持数值稳定，我们需要基向量不仅是线性无关的，而且要正交的。我们将在第4章中讨论这一点。
+
+## 2.6 矩阵的秩
+
+矩阵的*秩*定义为线性无关列向量的最大数目。线性无关列向量的个数等于线性无关行向量的个数是线性代数的标准结果。
+
+稍后我们将看到，任何矩阵都可以表示为秩1矩阵的展开式。
+
+**命题2.3** *外积矩阵 $xy^T$，其中 $x$ 和 $y$ 是 $\mathbb{R}^n $ 中的向量，秩为1。*
+
+***证明***
 
 $x y ^ { T } = \left( \begin{array} { l l l l } { y _ { 1 } x } & { y _ { 2 } x } & { \cdots } & { y _ { n } x } \end{array} \right) = \left( \begin{array} { c } { x _ { 1 } y ^ { T } } \\ { x _ { 2 } y ^ { T } } \\ { \vdots } \\ { x _ { n } y ^ { T } } \end{array} \right)$
 
-$A \in \mathbb { R } ^ { n \times n }$
+因此，$xy^T$ 的所有列（行）都是线性相关的。
+
+一个秩为 $n$ 的平方矩阵 $A \in \mathbb { R } ^ { n \times n }$ 称为非奇异矩阵，其*逆* $A^{−1}$ 满足
 
 $A A ^ { - 1 } = A ^ { - 1 } A = I$
 
-$\sum _ { j = 1 } ^ { p } \alpha _ { j } v _ { j } = 0$
+如果我们用一个非奇异矩阵乘以线性无关向量，那么这些向量就保持线性无关。
 
-$\sum _ { j = 1 } ^ { p } \alpha _ { j } T v _ { j } = 0$
+**命题2.4** *假设向量 $v_1, ..., v_p$ 是线性无关的。对于任何非奇异矩阵 $T$，向量  $Tv_1, ..., Tv_p$是线性无关的。*
+
+**证明** 显然 $\sum _ { j = 1 } ^ { p } \alpha _ { j } v _ { j } = 0$，如果仅当 $\sum _ { j = 1 } ^ { p } \alpha _ { j } T v _ { j } = 0$ 时（因为我们可以用 $T$ 或 $T^{-1}$ 将任何方程相乘）。因此，声明如下。
+
+
+
+
+
+
+

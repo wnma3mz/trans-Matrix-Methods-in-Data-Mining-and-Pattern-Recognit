@@ -157,3 +157,68 @@ $A ^ { T } \widehat { r } = 0$
 $\| r \| _ { 2 } ^ { 2 } = \widehat { r } ^ { T } \widehat { r } + ( \widehat { x } - x ) ^ { T } A ^ { T } A ( \widehat { x } - x ) = \| \widehat { r } \| _ { 2 } ^ { 2 } + \| A ( \widehat { x } - x ) \| _ { 2 } ^ { 2 } \geq \| \widehat { r } \| _ { 2 } ^ { 2 }$
 
 $A = \left(\begin{array} { c c c } { 1 } & { 1 } & { 1 } \\ { 1 } & { 2 } \\ { 1 } & { 3 } \\ { 1 } & { 41 } & { 5 } \end{array} \right) , \quad b = \left(\begin{array} { c } { 7.97 } \\ { 10.2 } \\ { 14.2 } \\ { 16.021 .2 } \end{array} \right)$
+
+```matlab
+>> C=A’*A % Normal equations
+
+C = 5 15
+    15 55
+    
+>> x=C\(A’*b)
+
+x = 4.2360
+    3.2260
+```
+
+$\kappa\left(A^{T} A\right)=(\kappa(A))^{2}$
+
+$A=\left(\begin{array}{ll}{1} & {1} \\ {\epsilon} & {0} \\ {0} & {\epsilon}\end{array}\right)$
+
+$A^{T} A=\left(\begin{array}{cc}{1+\epsilon^{2}} & {1} \\ {1} & {1+\epsilon^{2}}\end{array}\right)$
+
+$1+\epsilon^{2}$
+
+$f l\left[1+\epsilon^{2}\right]=1$
+
+```matlab
+A = 1 1
+    1 2
+    1 3
+    1 4
+    1 5
+    
+cond(A) = 8.3657
+
+cond(A’*A) = 69.9857
+```
+
+$l(x)=c_{0}+c_{1} x$
+
+$x=(101 \quad 102 \quad 103 \quad 104 \quad 105)^{T}$
+
+```matlab
+A = 1 101
+    1 102
+    1 103
+    1 104
+    1 105
+    
+cond(A) = 7.5038e+03
+
+cond(A’*A) = 5.6307e+07
+```
+
+$l(x)=b_{0}+b_{1}(x-103)$
+
+$\min _{x_{i}}\left\|A x_{i}-b_{i}\right\|_{2}, \quad i=1,2, \ldots, p$
+
+$X=\left(\begin{array}{llll}{x_{1}} & {x_{2}} & {\dots} & {x_{p}}\end{array}\right)$
+
+$X=\left(\begin{array}{llll}{b_{1}} & {b_{2}} & {\ldots} & {b_{p}}\end{array}\right)$
+
+$\min _{X}\|A X-B\|_{F}$
+
+$X=\left(A^{T} A\right)^{-1} A^{T} B$
+
+$\|A X-B\|_{F}^{2}=\sum_{i=1}^{p}\left\|A x_{i}-b_{i}\right\|_{2}^{2}$
+

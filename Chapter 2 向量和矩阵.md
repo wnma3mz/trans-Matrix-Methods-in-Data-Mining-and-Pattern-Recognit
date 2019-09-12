@@ -139,15 +139,15 @@ $\begin{array}x y ^ { T } &= \left( \begin{array} { c } { x _ { 1 } } \\ { x _ {
 
 在本节中，我们将简要讨论如何计算向量的“大小”。最常见的向量规范是
 
-$\| x \| _ { 1 } = \sum _ { i = 1 } ^ { n } \left| x _ { i } \right|$
+$\| x \| _ { 1 } = \sum\limits_ { i = 1 } ^ { n } \left| x _ { i } \right|$，一次范数
 
-$\| x \| _ { 2 } = \sqrt { \sum\limits_ { i = 1 } ^ { n } x _ { i } ^ { 2 } }$
+$\| x \| _ { 2 } = \sqrt { \sum\limits_ { i = 1 } ^ { n } x _ { i } ^ { 2 } }$，欧式范数（二次范数）
 
-$\| x \| _ { \infty } = \max _ { 1 \leq i \leq n } \left| x _ { i } \right|$
+$\| x \| _ { \infty } = \max\limits_ { 1 \leq i \leq n } \left| x _ { i } \right|$，最大范数
 
-欧几里得向量范数是 $\mathbb{R}^3$ 到 $ \mathbb{R}^n$ 中标准欧几里得距离的推广。这里定义的三个规范都是 $p$-norm的特殊情况：
+欧几里得向量范数是 $\mathbb{R}^3$ 到 $ \mathbb{R}^n$ 中标准欧几里得距离的推广。这里定义的三个范数都是 $p$-norm的特殊情况：
 
-$\| x \| _ { p } = \left( \sum _ { i = 1 } ^ { n } \left| x _ { i } \right| ^ { p } \right) ^ { 1 / p }$
+$\| x \| _ { p } = \left( \sum\limits_ { i = 1 } ^ { n } \left| x _ { i } \right| ^ { p } \right) ^ { 1 / p }$
 
 与欧几里得向量范数相关联的是 $\mathbb{R}^n$ 中两个向量 $x$ 和 $y$ 之间的*内积*，定义为
 
@@ -155,13 +155,13 @@ $( x , y ) = x ^ { T } y$
 
 一般来说，*向量范数*是一个具有以下性质的映射$\mathbb{R}^n\rightarrow\mathbb{R}$
 
-$\| x \| \geq 0$
+$\| x \| \geq 0$，对于所有 $x$
 
-$\| x \| = 0$
+$\| x \| = 0$，当且仅当 $x=0$
 
 $\| \alpha x \| = | \alpha | \| x \| , \alpha \in \mathbb { R }$
 
-$\| x + y \| \leq \| x \| + \| y \|$
+$\| x + y \| \leq \| x \| + \| y \|$，三角不等式
 
 通过范数，我们可以引入向量的近似中连续性和误差的概念。假设 $\bar{x}$ 是向量 $x$ 的近似值。对于任何给定的向量范数，我们定义*绝对误差*。
 
@@ -173,7 +173,7 @@ $\frac { \| \delta x \| } { \| x \| } = \frac { \| \overline { x } - x \| } { \|
 
 在有限维向量空间中，所有向量范数在以下意义上都是等价的：对于任意两个范数 $||\cdot||_{\alpha}$ 和 $||\cdot||_{\beta}$，存在常数 $m$ 和 $M$，使得
 
-$m \| x \| _ { \alpha } \leq \| x \| _ { \beta } \leq M \| x \| _ { \alpha }$
+$m \| x \| _ { \alpha } \leq \| x \| _ { \beta } \leq M \| x \| _ { \alpha }$，式2.6
 
 其中 $m$ 和 $M$ 不依赖于 $x$。例如，当 $x\in\mathbb{R}^n$
 
@@ -189,11 +189,11 @@ $\lim\limits_ { i \rightarrow \infty } \left\| x _ { i } - x ^ { * } \right\| = 
 
 $\cos \theta ( x , y ) = \frac { x ^ { T } y } { \| x \| _ { 2 } \| y \| _ { 2 } }$
 
-用这个方法，如果余弦值接近一，两个向量就很接近。同样，如果 $x$ 和 $y$ 之间的*夹角*为 $\pi/2$，即 $x^Ty=0$，则x和y是正交的。
+用这个方法，如果余弦值接近一，两个向量就很接近。同样，如果 $x$ 和 $y$ 之间的*夹角*为 $\pi/2$，即 $x^Ty=0$，则 $x$ 和 $y$ 是*正交*的。
 
 ## 2.4 矩阵范数
 
-对于任何向量范数，我们都可以定义相应的算子范数。设 $\cdot$ 为向量范数。相应的*矩阵范数*定义为
+对于任何向量范数，我们都可以定义相应的*算子范数*。设 $|| \cdot ||$ 为向量范数。相应的*矩阵范数*定义为
 
 $\| A \| = \sup\limits_ { x \neq 0 } \frac { \| A x \| } { \| x \| }$
 
@@ -203,7 +203,7 @@ $\begin{aligned} \| A \| & \geq 0  \text{ for all } A \\ \| A \| &= 0 \text { if
 
 对于上面定义的矩阵范数，以下基本不等式成立。
 
-**命题 2.1** *让 $\cdot $ 表示一个向量范数和相应的矩阵范数。然后*
+**命题 2.1** *让 $|| \cdot || $ 表示一个向量范数和相应的矩阵范数。然后*
 
 $\begin{aligned} \| A x \| & \leq \| A \| \| x \| \\ \| A B \| & \leq \| A \| \| B \| \end{aligned}$
 
@@ -217,17 +217,17 @@ $\frac { \| A x \| } { \| x \| } \leq \| A \|$
 
 $\| A \| _ { 2 } = \left( \max\limits_ { 1 \leq i \leq n } \lambda _ { i } \left( A ^ { T } A \right) \right) ^ { 1 / 2 }$
 
-即矩阵 $A^TA$ 最大特征值的平方根。因此，对于给定的矩阵 $||A||_2$（中等或大尺寸的矩阵），要获得的计算量相对较大。计算*矩阵无穷范数*（对于 $A\in\mathbb{R}^{m\times n}$ ）要容易得多。
+即矩阵 $A^TA$ 最大特征值的平方根。因此，对于给定的矩阵 $||A||_2$（中等或大规模的矩阵），要获得的计算量相对较大。计算*矩阵无穷范数*（对于 $A\in\mathbb{R}^{m\times n}$ ）要容易得多。
 
 $\| A \| _ { \infty } = \max\limits_ { 1 \leq i \leq m } \sum\limits_ { i = 1 } ^ { n } \left| a _ { i j } \right|$
 
-矩阵*一次范数*
+*矩阵一次范数*
 
 $\| A \| _ { 1 } = \max\limits_ { 1 \leq j \leq n } \sum\limits_ { i = 1 } ^ { m } \left| a _ { i j } \right|$
 
-在第6.1节中，我们将看到矩阵的2次范数有一个关于 $A$ 的奇异值的显式表达式。
+在6.1节中，我们将看到矩阵的2次范数有一个关于 $A$ 的奇异值的显式表达式。
 
-设 $A\in \mathbb{R}^{m\times n}$。在某些情况下，我们将把矩阵不当作一个线性算子，而是当作一个空间中的点，即 $\mathbb{R}^{mn}$。然后我们可以使用 *Frobinius* 矩阵范数，它由
+设 $A\in \mathbb{R}^{m\times n}$。在某些情况下，我们将把矩阵不当作一个线性算子，而是当作一个空间维数 $mn$ 中的点，即 $\mathbb{R}^{mn}$。然后我们可以使用 *Frobinius* 矩阵范数，它由
 
 $\| A \| _ { F } = \sqrt { \sum \limits_ { i = 1 } ^ { m } \sum \limits_ { j = 1 } ^ { n } a _ { i j } ^ { 2 } }$，式2.7
 
@@ -239,9 +239,9 @@ $\| A \| _ { F } ^ { 2 } = \operatorname { tr } \left( A ^ { T } A \right)$，�
 
 $\operatorname { tr } ( B ) = \sum\limits_ { i = 1 } ^ { n } b _ { i i }$
 
-弗罗贝尼乌斯范数不对应于向量范数，因此在这个意义上它不是一个算子范数。这个范数的优点是比2次范数更容易计算。弗罗贝尼乌斯*矩阵范数*实际上与欧几里得*向量范数*密切相关，即当矩阵用 $\mathbb{R}^{m\times n}$ 中的元素标识时，它是矩阵 $\mathbb{R}^{m\times n}$（线性空间）上的欧几里得向量范数。
+弗罗贝尼乌斯范数不对应于向量范数，因此在这个意义上它不是一个算子范数。这个范数的优点是比二次范数更容易计算。弗罗贝尼乌斯*矩阵范数*实际上与欧几里得*向量范数*密切相关，即当矩阵用 $\mathbb{R}^{mn}$ 中的元素标识时，它是矩阵 $\mathbb{R}^{m\times n}$（线性空间）上的欧几里得向量范数。
 
-## 2.5线性无关：基础部分
+## 2.5 线性无关：基础部分
 
 给定一组在 $\mathbb{R}^m $ 向量 $(v_j)^{n}_{j=1}$, 其中 $m\ge n$，考虑一组线性组合
 
@@ -255,7 +255,7 @@ $ \mathbb{R}^m $ 中的一组 $m$ 线性无关向量称为 $\mathbb{R}^{m}$ 中�
 
 **命题2.2** *假设向量 $ {(}v_j{)}^{n}_{j=1} $ 是线性相关的。然后一些 $v_k$ 可以写成其余部分的线性组合，$v _ { k } = \sum _ { j \neq k } \beta _ { j } v _ { j }$。*
 
-**证明。** *存在系数 $ \alpha_j $，其中一些 $\alpha_k\neq 0$，这样*
+**证明。** 存在系数 $ \alpha_j $，其中一些 $\alpha_k\neq 0$，这样
 
 $\sum \limits_ { j = 1 } ^ { n } \alpha _ { j } v _ { j } = 0$
 
@@ -283,7 +283,7 @@ $x y ^ { T } = \left( \begin{array} { l l l l } { y _ { 1 } x } & { y _ { 2 } x 
 
 因此，$xy^T$ 的所有列（行）都是线性相关的。
 
-一个秩为 $n$ 的平方矩阵 $A \in \mathbb { R } ^ { n \times n }$ 称为非奇异矩阵，其*逆* $A^{−1}$ 满足
+一个秩为 $n$ 的平方矩阵 $A \in \mathbb { R } ^ { n \times n }$ 称为*非奇异*矩阵，其*逆* $A^{−1}$ 满足
 
 $A A ^ { - 1 } = A ^ { - 1 } A = I$
 

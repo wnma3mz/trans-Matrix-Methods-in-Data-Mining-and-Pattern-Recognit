@@ -320,133 +320,27 @@ $A ^ { T } A x = A ^ { T } b$
 
 $x ^ { T } A ^ { T } A x = y ^ { T } y = \sum\limits_ { i = 1 } ^ { n } y _ { i } ^ { 2 } > 0$
 
-相当于 $A^TA$ 是正定的。因此， $A^TA$ 是非奇异的，
+相当于 $A^TA$ 是正定的。因此， $A^TA$ 是非奇异的，正态方程有一个唯一的解，我们表示 $\widehat { x }$
 
-$r = b - A x$
+然后，我们证明 $\widehat{x}$ 是最小二乘问题的解，即 $||\widehat{r}||_2\leq ||r||_2$，对于所有的 $r = b - A x$，可以写作
 
-$r = b - A \widehat { x } + A ( \widehat { x } - x ) = \widehat { r } + A ( \widehat { x } - x )$
+$ r = b - A \widehat { x } + A ( \widehat { x } - x ) = \widehat { r } + A ( \widehat { x } - x )$
+
+与
 
 $\begin{aligned} \| r \| _ { 2 } ^ { 2 } & = r ^ { T } r = ( \widehat { r } + A ( \widehat { x } - x ) ) ^ { T } ( \widehat { r } + A ( \widehat { x } - x ) ) \\ & = \widehat { r } ^ { T } \widehat { r } + \widehat { r } ^ { T } A ( \widehat { x } - x ) + ( \widehat { x } - x ) ^ { T } A ^ { T } \widehat { r } + ( \widehat { x } - x ) ^ { T } A ^ { T } A ( \widehat { x } - x ) \end{aligned}$
 
-$A ^ { T } \widehat { r } = 0$
+因为 $A ^ { T } \widehat { r } = 0$，中间两项为0，于是可得
 
 $\| r \| _ { 2 } ^ { 2 } = \widehat { r } ^ { T } \widehat { r } + ( \widehat { x } - x ) ^ { T } A ^ { T } A ( \widehat { x } - x ) = \| \widehat { r } \| _ { 2 } ^ { 2 } + \| A ( \widehat { x } - x ) \| _ { 2 } ^ { 2 } \geq \| \widehat { r } \| _ { 2 } ^ { 2 }$
 
-
-
-
-
-正态方程有一个唯一的解，我们表示所有r=b-a x的x。我们可以写信
-
-然后，我们证明x是最小二乘问题的解，即：
-
-和
-
-.
-
-因为=0，中间的两个项等于0，我们得到
-
-Tr+（x−x）Tata（x−x）=r 22+a（x−x）22≥，
-
 这是需要证明的。
 
-例3.11。我们现在可以解决本章开头给出的示例。我们有
-
-.
-
-然后我们用matlab得到
-
-\>>C=A'*A%法向方程
-
-C=5.15
-
-15 55
-
-\>>X=C\（A'*B）
-
-X=4.2360
-
-三点二二六零
-
-使用法向方程求解线性最小二乘问题有两个显著缺点：
-
-1。形成ATA会导致信息丢失。2。条件数ata是a的平方：
-
-κ（ata）=（κ（a））2.
-
-我们用几个例子来说明这些要点。
-
-例3.12。设为小，并定义矩阵
-
-.
-
-接下来是
-
-.
-
-如果非常小，1+2的浮点表示满足]=1，则在浮点运算中，法方程变为奇异方程。因此，在形成ATA时会丢失A中存在的重要信息。
-
-使用a的奇异值分解定义了矩形矩阵a的条件数。我们将在第6.6节中陈述关于最小二乘问题条件的结果。
-
-例3.13。我们使用matlab计算示例3.9中矩阵的条件数：
-
-A=1 1 2
-
-1 3
-
-1 4
-
-1 5
-
-康德（A）=8.3657康德（A'*A）=69.9857
-
-然后我们假设我们有一个线性模型
-
-L（x）=c0+c1x
-
-对于数据向量x=（101102103104105）t，这给出了一个大条件数的数据矩阵：
-
-A=1 101 1 102
-
-1 103
-
-1 104
-
-1 105
-
-Cond（A）=7.5038E+03 Cond（A'*A）=5.6307E+07如果我们使用该模型
-
-L（x）=b0+b1（x−103）
-
-相应的法向方程变成对角线，并且条件更好（证明这一点）。
-
-经常会出现一个矩阵相同的最小二乘问题序列，
-
-   
-
-有解决方案
-
-X=（ATA）-1ATBI，I＝1，2，…，P。
-
-定义，我们可以用矩阵形式写
-
-（3.5）
-
-有了这个解决方案
-
-x=（ata）−1安培。
-
-这源于身份
-
-   
-
-（3.5）中的p子问题是独立的。
-
-
-
-
+**例3.11** 我们现在可以解决本章开头给出的示例。我们有
 
 $A = \left(\begin{array} { c c c } { 1 } & { 1 } & { 1 } \\ { 1 } & { 2 } \\ { 1 } & { 3 } \\ { 1 } & { 41 } & { 5 } \end{array} \right) , \quad b = \left(\begin{array} { c } { 7.97 } \\ { 10.2 } \\ { 14.2 } \\ { 16.021 .2 } \end{array} \right)$
+
+然后使用MATLAB得到
 
 ```matlab
 >> C=A’*A % Normal equations
@@ -460,15 +354,29 @@ x = 4.2360
     3.2260
 ```
 
-$\kappa\left(A^{T} A\right)=(\kappa(A))^{2}$
+使用法向方程求解线性最小二乘问题有两个显著缺点：
+
+1. 形成 $A^TA$ 会导致信息丢失。
+
+2. 条件数 $A^TA$ 是 $A$ 的平方：
+
+   $\kappa\left(A^{T} A\right)=(\kappa(A))^{2}$
+
+我们用几个例子来说明这些要点。
+
+**例3.12** 设为 $\epsilon$ 小，并定义矩阵
 
 $A=\left(\begin{array}{ll}{1} & {1} \\ {\epsilon} & {0} \\ {0} & {\epsilon}\end{array}\right)$
 
+接下来是
+
 $A^{T} A=\left(\begin{array}{cc}{1+\epsilon^{2}} & {1} \\ {1} & {1+\epsilon^{2}}\end{array}\right)$
 
-$1+\epsilon^{2}$
+如果 $\epsilon$  非常小，$1+\epsilon^{2}$ 的浮点表示满足 $f l\left[1+\epsilon^{2}\right]=1$ ，则在浮点运算中，法方程变为奇异方程。因此，在形成 $A^TA$ 时会丢失 $A$ 中存在的重要信息。
 
-$f l\left[1+\epsilon^{2}\right]=1$
+使用 $A$ 的奇异值分解定义了矩形矩阵 $A$ 的条件数。我们将在第6.6节中陈述关于最小二乘问题条件的结果。
+
+**例3.13** 我们使用matlab计算例3.9中矩阵的条件数：
 
 ```matlab
 A = 1 1
@@ -482,9 +390,11 @@ cond(A) = 8.3657
 cond(A’*A) = 69.9857
 ```
 
+然后我们假设我们有一个线性模型
+
 $l(x)=c_{0}+c_{1} x$
 
-$x=(101 \quad 102 \quad 103 \quad 104 \quad 105)^{T}$
+对于数据向量 $x=(101 \quad 102 \quad 103 \quad 104 \quad 105)^{T}$。这给出了一个大条件数的数据矩阵：
 
 ```matlab
 A = 1 101
@@ -498,17 +408,30 @@ cond(A) = 7.5038e+03
 cond(A’*A) = 5.6307e+07
 ```
 
+如果我们使用该模型
+
 $l(x)=b_{0}+b_{1}(x-103)$
+
+相应的法向方程变成对角线，并且条件更好（证明这一点）。
+
+经常会出现一个矩阵相同的最小二乘问题序列，
 
 $\min _{x_{i}}\left\|A x_{i}-b_{i}\right\|_{2}, \quad i=1,2, \ldots, p$
 
-$X=\left(\begin{array}{llll}{x_{1}} & {x_{2}} & {\dots} & {x_{p}}\end{array}\right)$
+其解为
 
-$X=\left(\begin{array}{llll}{b_{1}} & {b_{2}} & {\ldots} & {b_{p}}\end{array}\right)$
+$x_i=(A^TA)^{-1}A^Tb_i, \quad i=1,2, \ldots, p$
 
-$\min _{X}\|A X-B\|_{F}$
+定义 $X=\left(\begin{array}{llll}{x_{1}} & {x_{2}} & {\dots} & {x_{p}}\end{array}\right)$ 与 $X=\left(\begin{array}{llll}{b_{1}} & {b_{2}} & {\ldots} & {b_{p}}\end{array}\right)$，之后我们可以用矩阵形式写成
+
+$\min _{X}\|A X-B\|_{F}$，式3.5
+
+这个解为
 
 $X=\left(A^{T} A\right)^{-1} A^{T} B$
 
+这单位矩阵如下形式
+
 $\|A X-B\|_{F}^{2}=\sum_{i=1}^{p}\left\|A x_{i}-b_{i}\right\|_{2}^{2}$
 
+以及（3.5）中的 $p$ 子问题是独立的。

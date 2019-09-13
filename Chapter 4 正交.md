@@ -1,6 +1,4 @@
-第四章
-
-正交性
+# 第四章 正交性
 
 即使求解线性方程组和正态方程组的高斯消去法是一种广泛应用于许多应用中的标准算法，但在需要将最重要的信息与不重要的信息分开的情况下，这种方法仍然不够。（噪音）。“数据质量”的典型线性代数公式是对“好基向量和坏基向量”的概念进行量化；不严格地说，好基向量是那些“非常线性无关”的向量，即接近正交的向量。在同样的情况下，几乎线性相关的向量是坏基向量。在这一章中，我们将介绍一些理论和正交向量计算算法。第6章给出了一组向量“质量”的更完整的量化。
 
@@ -16,91 +14,17 @@
 
 ​                                                                                                                                                                                                                               
 
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
+$A = \left( \begin{array} { c c } { 1 } & { 1.05 } \\ { 1 } & { 1 } \\ { 1 } & { 0.95 } \end{array} \right) , \quad B = \left( \begin{array} { c c } { 1 } & { 1 / \sqrt { 2 } } \\ { 1 } & { 0 } \\ { 1 } & { - 1 / \sqrt { 2 } } \end{array} \right)$
+$q _ { j } , j = 1,2 , \ldots , n$
+$q _ { i } ^ { T } q _ { j } = 0 , i \neq j$
+$q _ { k } = \sum _ { j \neq k } \alpha _ { j } q _ { j }$
+$q _ { k } ^ { T } q _ { k } = \sum _ { j \neq k } \alpha _ { j } q _ { k } ^ { T } q _ { j } = 0$
+$q _ { j } , j = 1,2 , \ldots , m$
+$\| q _ { j } \| _ { 2 } = 1$
+$Q = \left( \begin{array} { l l l l } { q _ { 1 } } & { q _ { 2 } } & { \cdots } & { q _ { m } } \end{array} \right) \in R ^ { m \times m }$
+$Q \in R ^ { m \times m }$
 
 ​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-
-
-​     
-
-​     
-
-​     
-
-
-
-
-
-​                                               
 
 
 
@@ -182,15 +106,97 @@ xtx=（pq）tpq=qtppq=qtq=i。
 
 A∈Rm×N，
 
-.
+.$Q ^ { - 1 } = Q ^ { T }$
+$Q Q ^ { T } = I$
+$Q Q ^ { T } x = x$
+$Q Q ^ { T } x = Q Q ^ { T } Q y = Q y = x$
+$Q Q ^ { T } = I$
+$X ^ { T } X = ( P Q ) ^ { T } P Q = Q ^ { T } P ^ { T } P Q = Q ^ { T } Q = I$
+$Q _ { 1 } \in R ^ { m \times k }$
+$Q _ { 2 } \in R ^ { m \times ( m - k ) }$
+$\| Q x \| _ { 2 } ^ { 2 } = ( Q x ) ^ { T } Q x = x ^ { T } Q ^ { T } Q x = x ^ { T } x = \| x \| _ { 2 } ^ { 2 }$
+$U \in R ^ { m \times m }$
+$V \in R ^ { n \times n }$
+$A \in R ^ { m \times n }$
+$\left. \begin{array} { l } { \| U A V \| _ { 2 } = \| A \| _ { 2 } } \\ { \| U A V \| _ { F } = \| A \| _ { F } } \end{array} \right.$
+$A \in R ^ { m \times n } , m \geq n$
+$G = \left( \begin{array} { c c } { c } & { s } \\ { - s } & { c } \end{array} \right) , \quad c ^ { 2 } + s ^ { 2 } = 1$
+$c = x _ { 1 } / \sqrt { x _ { 1 } ^ { 2 } + x _ { 2 } ^ { 2 } }$
+$s = x _ { 2 } / \sqrt { x _ { 1 } ^ { 2 } + x _ { 2 } ^ { 2 } }$
+$\frac { 1 } { \sqrt { x _ { 1 } ^ { 2 } + x _ { 2 } ^ { 2 } } } \left( \begin{array} { c c } { x _ { 1 } } & { x _ { 2 } } \\ { - x _ { 2 } } & { x _ { 1 } } \end{array} \right) \left( \begin{array} { l } { x _ { 1 } } \\ { x _ { 2 } } \end{array} \right) = \left( \begin{array} { c } { \sqrt { x _ { 1 } ^ { 2 } + x _ { 2 } ^ { 2 } } } \\ { 0 } \end{array} \right)$
+$G = \left( \begin{array} { c c c c } { 1 } & { 0 } & { 0 } & { 0 } \\ { 0 } & { c } & { 0 } & { s } \\ { 0 } & { 0 } & { 1 } & { 0 } \\ { 0 } & { - s } & { 0 } & { c } \end{array} \right)$
+$x \in R ^ { 4 }$
 
 证据。第一个等式很容易用命题4.8证明。第二个是用弗罗贝尼乌斯范数的替代表达式（2.8）和同一性Tr（bc）=Tr（cb）证明的。
+
+
+
+```matlab
+x=[1;2;3;4];
+sq=sqrt(x(2)^2+x(4)^2);
+c=x(2)/sq; s=x(4)/sq;
+G=[1 0 0 0; 0 c 0 s; 0 0 1 0; 0 -s 0 c];
+y=G*x
+```
+
+```matlab
+y = 1.0000
+    4.4721
+    3.0000
+    	 0
+```
+
+
+
+$\left( \begin{array} { c c c c } { 1 } & { 0 } & { 0 } & { 0 } \\ { 0 } & { 1 } & { 0 } & { 0 } \\ { 0 } & { 0 } & { c _ { 1 } } & { s _ { 1 } } \\ { 0 } & { 0 } & { - s _ { 1 } } & { c _ { 1 } } \end{array} \right) \left( \begin{array} { l } { x } \\ { x } \\ { x } \\ { x } \end{array} \right) = \left( \begin{array} { l } { x } \\ { x } \\ { * } \\ { 0 } \end{array} \right)$
+
+$\left( \begin{array} { c c c c } { 1 } & { 0 } & { 0 } & { 0 } \\ { 0 } & { c _ { 2 } } & { s _ { 2 } } & { 0 } \\ { 0 } & { - s _ { 2 } } & { c _ { 2 } } & { 0 } \\ { 0 } & { 0 } & { 0 } & { 1 } \end{array} \right) \left( \begin{array} { l } { x } \\ { x } \\ { x } \\ { 0 } \end{array} \right) = \left( \begin{array} { c } { x } \\ { * } \\ { 0 } \\ { 0 } \end{array} \right)$
+
+$\left( \begin{array} { c c c c } { c _ { 3 } } & { s _ { 3 } } & { 0 } & { 0 } \\ { - s _ { 3 } } & { c _ { 3 } } & { 0 } & { 0 } \\ { 0 } & { 0 } & { 1 } & { 0 } \\ { 0 } & { 0 } & { 0 } & { 1 } \end{array} \right) \left( \begin{array} { l } { x } \\ { x } \\ { 0 } \\ { 0 } \end{array} \right) = \left( \begin{array} { l } { \kappa } \\ { 0 } \\ { 0 } \\ { 0 } \end{array} \right)$
+
+$\kappa = \| x \| _ { 2 }$
+
+$\kappa e _ { 1 } = G _ { 1 } ( G _ { 2 } ( G _ { 3 } x ) ) = ( G _ { 1 } G _ { 2 } G _ { 3 } ) x$
+
+$P x = K e _ { 1 }$
 
 4.2初等正交矩阵
 
 我们将使用初等正交矩阵将矩阵简化为紧致形式。例如，我们将矩阵A∈Rm×N，m≥N转换成三角形。
 
 ### 4.2.1平面旋转
+
+```matlab
+function [c,s]=rot(x,y);
+  % Construct a plane rotation that zeros the second
+  % component in the vector [x;y]’ (x and y are scalars)
+  sq=sqrt(x^2 + y^2);
+  c=x/sq; s=y/sq;
+  
+function X=approt(c,s,i,j,X);
+  % Apply a plane (plane) rotation in plane (i,j)
+  % to a matrix X
+  X([i,j],:)=[c s; -s c]*X([i,j],:);
+```
+
+
+
+```matlab
+x=[1;2;3;4];
+for i=3:-1:1
+  [c,s]=rot(x(i),x(i+1));
+  x=approt(c,s,i,i+1,x);
+end
+
+>> x = 5.4772
+			0
+			0
+			0
+```
+
+
+
+
 
 2×2平面旋转矩阵
 
@@ -288,6 +294,103 @@ x=[1；2；3；4]；对于i=3:-1:1
 
 4.2.初等正交矩阵
 
+$v \neq 0$
+
+$P = I - \frac { 2 } { v ^ { T } v } v v ^ { T }$
+
+$\| x \| _ { 2 } = \| y \| _ { 2 }$
+
+$x - \frac { 2 v ^ { T } x } { v ^ { T } v } v = y$
+
+$\beta v = x - y$
+
+$v ^ { T } v = x ^ { T } x + y ^ { T } y - 2 x ^ { T } y = 2 ( x ^ { T } x - x ^ { T } y )$
+
+$x ^ { T } x = y ^ { T } y$
+
+$v ^ { T } x = x ^ { T } x - y ^ { T } x = \frac { 1 } { 2 } v ^ { T } v$
+
+$P x = x - \frac { 2 v ^ { T } x } { v ^ { T } v } v = x - v = y$
+
+$y = \kappa e _ { 1 }$
+
+$\kappa = \pm \| x \| _ { 2 }$
+
+$e _ { 1 } ^ { T } = \left( \begin{array} { l l l l } { 1 } & { 0 } & { \cdots } & { 0 } \end{array} \right)$
+
+$v = x - \kappa e _ { 1 }$
+
+$P = I - \frac { 2 } { v ^ { T } v } v v ^ { T } = I - 2 u u ^ { T } , \quad u = \frac { 1 } { \| v \| _ { 2 } } v$
+
+```matlab
+function u=househ(x)
+  % Compute the Householder vector u such that
+  % (I - 2 u * u’)x = k*e_1, where
+  % |k| is equal to the euclidean norm of x
+  % and e_1 is the first unit vector
+  n=length(x); % Number of components in x
+  kap=norm(x); v=zeros(n,1);
+  v(1)=x(1)+sign(x(1))*kap;
+  v(2:n)=x(2:n);
+  u=(1/norm(v))*v;
+```
+
+
+
+$P x = x - ( 2 u ^ { T } x ) u$
+
+$P X = A - 2 u ( u ^ { T } X )$
+
+
+
+```matlab
+function Y=apphouse(u,X);
+  % Multiply the matrix X by a Householder matrix
+  % Y = (I - 2 * u * u’) * X
+  Y=X-2*u*(u’*X);
+```
+
+
+
+```matlab
+>>   x=[1; 2; 3; 4];
+>>   u=househ(x);
+>>   y=apphouse(u,x)
+
+    y = -5.4772
+              0
+              0
+              0
+```
+
+
+
+$x = \left( \begin{array} { l l l l } { 1 } & { 2 } & { 3 } & { 4 } \end{array} \right) ^ { T }$
+
+$$
+
+$\left( \begin{array} { l } { a _ { 12 } ^ { ( 1 ) } } \\ { a _ { - 2 } ^ { ( 1 ) } } \end{array} \right)$
+
+$\hat { P } _ { 2 }$
+
+$P _ { 2 } = \left( \begin{array} { c c } { 1 } & { 0 } \\ { 0 } & { \hat { P } _ { 2 } } \end{array} \right)$
+
+
+
+```matlab
+u=househ(A(2:m,2)); A(2:m,2:n)=apphouse(u,A(2:m,2:n));
+
+>> A = -0.8992 -0.6708 -0.7788 -0.9400
+       -0.0000 0.3299 0.7400 0.3891
+       -0.0000 0.0000 -0.1422 -0.6159
+       -0.0000 -0.0000 0.7576 0.1632
+       -0.0000 -0.0000 0.3053 0.4680
+```
+
+
+
+$\left( \begin{array} { c c } { c } & { s } \\ { - s } & { c } \end{array} \right) \left( \begin{array} { l } { x } \\ { y } \end{array} \right) = \left( \begin{array} { c } { c x + s y } \\ { - s x + c y } \end{array} \right)$
+
 ### 4.2.2户主改造
 
 设=0为任意向量，并将
@@ -306,7 +409,11 @@ vtv=xtx+yty−2xty=2（xtx−xty）
 
 因为XTX=Yty。此外，
 
-   
+ $6 ( m - 1 ) n \approx 6 m n$
+
+$\| P - \hat { P } \| _ { 2 } = O ( \mu )$
+
+$f l ( \hat { P } A ) = P ( A + E ) , \quad \| E \| _ { 2 } = O ( \mu \| A \| _ { 2 } )$
 
 所以我们有
 
@@ -363,7 +470,7 @@ Y=-5.4772 0
 由于平面旋转可以嵌入到单元矩阵中，为了结构化地应用转换，我们同样可以嵌入户主转换。例如，假设我们已经将矩阵中的第一列转换为单位向量，然后我们希望将主对角线下面第二列中的所有元素归零。因此，在一个5×4矩阵的例子中，我们要计算转换
 
 
- 
+
 
 4.3.浮点运算数
 
